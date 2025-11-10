@@ -15,8 +15,9 @@ spec:
       containers:
         - name: backend
           image: omarsaqrr/backend:latest
+          envFrom:
+            - secretRef:
+                name: backend-secret
+          imagePullPolicy: Always
           ports:
             - containerPort: 5000
-          env:
-            - name: DATABASE_URL
-              value: postgresql://postgres:postgres@postgres:5432/microservices_db
